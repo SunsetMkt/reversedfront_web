@@ -42,7 +42,7 @@ jobs:
 
             - name: Download APK
               run: |
-                  python download_apk.py
+                  python download_apk_sharepoint.py
 
             - name: Extract APK
               run: |
