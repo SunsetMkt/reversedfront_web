@@ -36,6 +36,18 @@ def get_sharepoint_file(url, output):
                     f.write(chunk)
 
 
+def get_sharepoint_file_v2(url, output):
+    # Thanks to @ChinHongTan
+    if "download=1" not in url:
+        url = url + "&download=1"
+    with requests.get(url, stream=True) as r:
+        r.raise_for_status()
+        with open(output, "wb") as f:
+            for chunk in r.iter_content(chunk_size=8192):
+                if chunk:  # filter out keep-alive new chunks
+                    f.write(chunk)
+
+
 # Get script file path
 script_path = os.path.dirname(os.path.abspath(__file__))
 os.chdir(script_path)
