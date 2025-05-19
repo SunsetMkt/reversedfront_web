@@ -62,7 +62,7 @@ jobs:
 
             - name: Copy static files
               run: |
-                  cp static/* public/
+                  cp -r static/* public/
 
             - name: Deploy
               uses: peaceiris/actions-gh-pages@v4
